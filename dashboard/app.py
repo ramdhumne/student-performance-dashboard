@@ -1,3 +1,5 @@
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 import joblib
 import streamlit as st
 import pandas as pd
@@ -6,7 +8,7 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 
 # Load data
-df = pd.read_csv("../data/students.csv")
+df = pd.read_csv(os.path.join(BASE_DIR, "data", "students.csv"))
 
 # Calculate average
 df["average"] = (df["math score"] + df["reading score"] + df["writing score"]) / 3
@@ -72,7 +74,7 @@ st.plotly_chart(fig3, use_container_width=True)
 # ---------------- PREDICTION PANEL ----------------
 st.header("🎯 Predict Student Score")
 
-model = joblib.load("../models/student_model.pkl")
+model = joblib.load(os.path.join(BASE_DIR, "models", "student_model.pkl"))
 
 with st.form("prediction_form"):
     gender = st.selectbox("Gender", df["gender"].unique())
