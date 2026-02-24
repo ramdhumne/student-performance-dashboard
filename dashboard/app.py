@@ -13,7 +13,7 @@ df = pd.read_csv(os.path.join(BASE_DIR, "data", "students.csv"))
 # Calculate average
 df["average"] = (df["math score"] + df["reading score"] + df["writing score"]) / 3
 
-st.title("🎓 Student Performance Dashboard")
+st.title("Student Performance Dashboard")
 
 # ---------------- SIDEBAR FILTERS ----------------
 st.sidebar.header("Filters")
@@ -72,7 +72,7 @@ fig3 = px.imshow(corr, text_auto=True)
 st.plotly_chart(fig3, use_container_width=True)
 
 # ---------------- PREDICTION PANEL ----------------
-st.header("🎯 Predict Student Score")
+st.header("Predict Student Score")
 
 model = joblib.load(os.path.join(BASE_DIR, "models", "student_model.pkl"))
 
